@@ -1,0 +1,84 @@
+# 🎬 ShortsGen Pro — Gumroad 產品頁面
+
+> 以下內容可直接複製貼上到 Gumroad 產品頁面
+
+## 產品名稱
+ShortsGen Pro — AI 自動生成 YouTube Shorts
+
+## 產品描述
+
+```markdown
+# 🎬 ShortsGen Pro
+
+**每天自動產出高品質 YouTube Shorts，完全不用動手。**
+
+ShortsGen Pro 使用 AI 自動：
+✓ 從 Pixabay 抓取高畫質素材影片
+✓ 隨機挑選名言語錄（激勵/療癒/心理學）
+✓ 用 edge-tts 自然語音朗讀
+✓ 產生療癒鋼琴背景音樂
+✓ 疊加精美文字（霞鶩文楷字體）
+✓ 自動上傳到你的 YouTube 頻道
+
+## 適合誰？
+- **YouTuber / 創作者** — 每天要發 Shorts 但沒時間剪輯
+- **品牌行銷** — 需要持續產出短影音內容
+- **心靈成長頻道** — 名言語錄 + 療癒內容類型
+
+## 方案內容
+
+### Pro ($29/月)
+- 每月 60 支 Shorts（每天 2 支）
+- 激勵 + 療癒兩種主題
+- 無浮水印
+- 自訂名言庫
+- YouTube 自動上傳
+
+### Business ($99/月)
+- 無限 Shorts
+- 所有 Pro 功能
+- API 存取
+- 自訂品牌
+- 優先支援
+
+### Enterprise ($499/月)
+- 所有 Business 功能
+- 白標籤
+- 多頻道管理
+- 專屬開發
+
+## 如何運作？
+1. 訂閱後收到 GitHub Actions template
+2. 填入你的 YouTube API key
+3. Workflow 每日自動執行
+4. Shorts 自動發布！
+
+## 常見問題
+
+**Q: 需要會寫程式嗎？**
+A: 完全不用。只要會填 API key 就可以。
+
+**Q: 影片會重複嗎？**
+A: 不會。每天從 Pixabay 數百萬素材 + 74 句名言庫隨機組合。
+
+**Q: 可以退款嗎？**
+A: 7 天內不滿意全額退款。
+```
+
+## 定價設定
+
+| 方案 | 價格 | 類型 | 庫存 |
+|------|------|------|------|
+| Pro | $29/月 | 訂閱 (每月) | 無限 |
+| Business | $99/月 | 訂閱 (每月) | 無限 |
+| Enterprise | $499/月 | 訂閱 (每月) | 無限 |
+
+## 封面圖建議
+- 尺寸: 1280x720px
+- 文字: "AI 自動生成 YouTube Shorts"
+- 背景: 深色 (和你的工具站風格一致)
+- 可用 Canva 免費製作
+
+## License Key
+建議啟用 License Key 功能，每個客戶有唯一金鑰。
+授權腳本會檢查 key 是否有效。
