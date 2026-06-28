@@ -1,0 +1,52 @@
+# 🏷️ Deal Finder Pro — Gumroad 產品頁面
+
+## 產品名稱
+Deal Finder Pro — Amazon 自動砍單/優惠追蹤器
+
+## 產品描述（直接複製貼上到 Gumroad）
+
+```
+# 🏷️ Deal Finder Pro
+
+**自動追蹤 Amazon 最優惠商品，不再錯過任何降價。**
+
+Deal Finder Pro 自動：
+✓ 每小時掃描 Amazon 熱門商品價格
+✓ 偵測價格跌幅 > 20% 的 deal
+✓ 產生精美的優惠展示頁面
+✓ 自動發布到 GitHub Pages
+✓ 內含你的聯盟行銷連結
+
+## 適合誰？
+- **網購省錢族** — 想買便宜但不想一直刷價格
+- **聯盟行銷者** — 想自動產生優惠內容
+- **比價網站經營者** — 需要自動化價格監控
+
+## 方案內容
+
+### Pro ($9/月)
+- 每小時價格掃描
+- 跌幅 20%+ 自動通知
+- GitHub Pages 自動部署
+- Amazon 聯盟連結嵌入
+
+## 如何運作？
+1. 訂閱後 Fork repo
+2. 設定 GitHub Pages
+3. Workflow 自動每小時更新
+4. 你的 deal 網站自動產生！
+
+## 常見問題
+
+**Q: 需要 Amazon API 嗎？**
+A: 不用，使用爬蟲技術抓取公開價格資訊。
+
+**Q: 台灣 Amazon 也可以用嗎？**
+A: 支援 Amazon.com / .co.jp / .de / .co.uk 等多站點。
+```
+
+## Gumroad 設定
+
+| 方案 | 價格 | 類型 | 連結 |
+|------|------|------|------|
+| Pro | $9/月 | 訂閱 | dealfinder-pro |
