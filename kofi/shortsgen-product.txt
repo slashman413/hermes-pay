@@ -1,0 +1,33 @@
+# 🎬 ShortsGen Pro — Ko-fi 商品設定
+
+## 商品類型：Membership（訂閱制）
+
+### Tier 1: Pro — $29/月
+**名稱：** ShortsGen Pro — Pro
+**價格：** $29/月
+**說明：**
+每天自動產出高品質 YouTube Shorts，完全不用動手。
+✓ 每月 60 支 Shorts（每天 2 支）
+✓ 激勵 + 療癒兩種主題
+✓ 無浮水印
+✓ 自訂名言庫
+✓ YouTube 自動上傳
+
+### Tier 2: Business — $99/月
+**名稱：** ShortsGen Pro — Business
+**價格：** $99/月
+**說明：**
+✓ 無限 Shorts
+✓ 所有 Pro 功能
+✓ API 存取
+✓ 自訂品牌
+✓ 優先支援
+
+### Tier 3: Enterprise — $499/月
+**名稱：** ShortsGen Pro — Enterprise
+**價格：** $499/月
+**說明：**
+✓ 所有 Business 功能
+✓ 白標籤
+✓ 多頻道管理
+✓ 專屬開發

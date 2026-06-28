@@ -1,0 +1,14 @@
+# 🏷️ Deal Finder Pro — Ko-fi 商品設定
+
+## 商品類型：Membership（訂閱制）
+
+### Pro — $9/月
+**名稱：** Deal Finder Pro
+**價格：** $9/月
+**說明：**
+自動追蹤 Amazon 最優惠商品，不再錯過任何降價。
+✓ 每小時掃描 Amazon 熱門商品價格
+✓ 偵測價格跌幅 > 20% 的 deal
+✓ 精美的優惠展示頁面
+✓ 自動 GitHub Pages 發布
+✓ 內含你的聯盟行銷連結

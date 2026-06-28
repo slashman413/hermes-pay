@@ -1,0 +1,31 @@
+# 📈 TWSE Premium — Ko-fi 商品設定
+
+## 商品類型：Membership（訂閱制）
+
+### Tier 1: Monthly — $49/月
+**名稱：** TWSE Premium — Monthly
+**價格：** $49/月
+**說明：**
+AI 驅動的台股篩選與交易信號，每天自動更新。
+✓ 每日掃描 1700+ 檔台股
+✓ MACD + ADX + W%R 三指標過濾
+✓ Email 通知
+✓ Excel 匯出
+
+### Tier 2: Quarterly — $99/季
+**名稱：** TWSE Premium — Quarterly
+**價格：** $99/季
+**說明：**
+✓ 所有 Monthly 功能
+✓ 布林通道 + RSI
+✓ 歷史回測數據
+✓ 自訂參數
+
+### Tier 3: Annual — $299/年
+**名稱：** TWSE Premium — Annual
+**價格：** $299/年
+**說明：**
+✓ 所有 Quarterly 功能
+✓ API 存取
+✓ 即時 LINE 通知
+✓ 優先客服
