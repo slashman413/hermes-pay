@@ -43,8 +43,7 @@ PRODUCTS = {
         "repo": "hermes-deal-finder",
         "tiers": {
             "free": {"price": 0},
-            "pro": {"price": 9, "stripe_link": "https://buy.stripe.com/test_...",
-                   "gumroad": "https://slashman413.gumroad.com/l/dealfinder-pro"},
+            "pro": {"price": 9, "kofi": "https://ko-fi.com/s/5730f8f947"},
         }
     },
     "seofarm": {
@@ -52,8 +51,7 @@ PRODUCTS = {
         "repo": "hermes-seo-farm",
         "tiers": {
             "free": {"price": 0},
-            "pro": {"price": 19, "stripe_link": "https://buy.stripe.com/test_...",
-                   "gumroad": "https://slashman413.gumroad.com/l/seo-engine"},
+            "pro": {"price": 19, "kofi": ""},
         }
     },
 }
