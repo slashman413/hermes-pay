@@ -33,12 +33,9 @@ PRODUCTS = {
         "name": "TWSE Premium",
         "repo": "hermes-twse-premium",
         "tiers": {
-            "monthly": {"price": 49, "stripe_link": "https://buy.stripe.com/test_...",
-                       "gumroad": "https://slashman413.gumroad.com/l/twse-monthly"},
-            "quarterly": {"price": 99, "stripe_link": "https://buy.stripe.com/test_...",
-                         "gumroad": "https://slashman413.gumroad.com/l/twse-quarterly"},
-            "annual": {"price": 299, "stripe_link": "https://buy.stripe.com/test_...",
-                      "gumroad": "https://slashman413.gumroad.com/l/twse-annual"},
+            "monthly": {"price": 49, "kofi": "https://ko-fi.com/s/b99720d13d"},
+            "quarterly": {"price": 99, "kofi": "https://ko-fi.com/s/b99720d13d"},
+            "annual": {"price": 299, "kofi": "https://ko-fi.com/s/b99720d13d"},
         }
     },
     "dealfinder": {
