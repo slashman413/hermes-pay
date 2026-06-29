@@ -23,13 +23,10 @@ PRODUCTS = {
         "name": "ShortsGen Pro",
         "repo": "hermes-shortsgen",
         "tiers": {
-            "free": {"price": 0, "stripe_link": "", "gumroad": ""},
-            "pro": {"price": 29, "stripe_link": "https://buy.stripe.com/test_5kA3cT4sT...", 
-                    "gumroad": "https://slashman413.gumroad.com/l/shortsgen-pro"},
-            "business": {"price": 99, "stripe_link": "https://buy.stripe.com/test_...",
-                         "gumroad": "https://slashman413.gumroad.com/l/shortsgen-business"},
-            "enterprise": {"price": 499, "stripe_link": "https://buy.stripe.com/test_...",
-                          "gumroad": ""},
+            "free": {"price": 0, "kofi": ""},
+            "pro": {"price": 29, "kofi": "https://ko-fi.com/s/896aa3c229"},
+            "business": {"price": 99, "kofi": "https://ko-fi.com/s/896aa3c229"},
+            "enterprise": {"price": 499, "kofi": "https://ko-fi.com/s/896aa3c229"},
         }
     },
     "twse": {
@@ -140,9 +137,9 @@ def generate_payment_buttons() -> str:
         for tier_key, tier_info in prod["tiers"].items():
             if tier_info["price"] == 0:
                 continue
-            gumroad = tier_info.get("gumroad", "")
-            btn_url = gumroad or tier_info.get("stripe_link", "#")
-            btn_label = "Gumroad 🚀" if gumroad else "Stripe 💳" if tier_info.get("stripe_link") else "🔧 設定中"
+            kofi = tier_info.get('kofi', '')
+            btn_url = kofi or '#'
+            btn_label = 'Ko-fi 🚀' if kofi else '🔧 Pending setup'
             buttons += f"""
                 <div class="tier-card">
                     <h4>{tier_key.title()}</h4>
