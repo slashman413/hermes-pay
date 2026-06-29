@@ -1,44 +1,44 @@
 🎬 ShortsGen Pro — Welcome Guide
 ===================================
-感謝你訂閱 ShortsGen Pro！
+Thank you for subscribing to ShortsGen Pro!
 
-你的 YouTube Shorts 自動生產系統已經準備好了。
-以下是啟動步驟：
+Your automated YouTube Shorts production system is ready.
+Follow the steps below to get started:
 
 ---
 
-Step 1: Fork 專案
-1. 前往 https://github.com/slashman413/pixabay-shorts-bot
-2. 按右上角「Fork」
-3. Fork 到你的 GitHub 帳號
+Step 1: Fork the Project
+1. Go to https://github.com/slashman413/pixabay-shorts-bot
+2. Click "Fork" (top right)
+3. Fork it to your GitHub account
 
-Step 2: 設定 Secrets
-在你的 Fork 專案中：
+Step 2: Set Up Secrets
+In your forked repository:
 Settings → Secrets and variables → Actions
-加入以下 Secrets：
+Add the following secrets:
 
-  PIXABAY_API_KEY=你的PixabayAPI金鑰
-  YOUTUBE_API_KEY=你的YouTubeAPI金鑰
-  YOUTUBE_CHANNEL_ID=你的頻道ID
+  PIXABAY_API_KEY=***
+  YOUTUBE_API_KEY=***
+  YOUTUBE_CHANNEL_ID=your_channel_id
 
-（如果沒有 Pixabay 金鑰，去 https://pixabay.com/api/docs/ 免費申請）
+(No Pixabay key? Get one free at https://pixabay.com/api/docs/)
 
-Step 3: 啟用 GitHub Actions
-1. 點選 Actions 分頁
-2. 按「I understand my workflows, go ahead and enable them」
-3. Workflow 會自動在每天 08:00 和 20:00 台北時間執行
+Step 3: Enable GitHub Actions
+1. Go to the Actions tab
+2. Click "I understand my workflows, go ahead and enable them"
+3. The workflow will run daily at 08:00 and 20:00 Taipei time
 
-Step 4: 觀看你的第一部 Shorts！
-Workflow 跑完後，你的 YouTube 頻道就會出現第一部自動生成的 Shorts！
-
----
-
-進階設定
-- 自訂名言：編輯 data/quotes.json
-- 更換語音：修改 src/main.py 的 VOICE_POOL
-- 調整時間：修改 .github/workflows/daily-shorts.yml 的 cron
+Step 4: Watch Your First Shorts Go Live!
+Once the workflow completes, your first AI-generated Shorts will appear on your YouTube channel!
 
 ---
 
-技術支援
-有問題請透過 Ko-fi 私訊我！
+Advanced Settings
+- Custom quotes: edit data/quotes.json
+- Change TTS voice: modify VOICE_POOL in src/main.py
+- Adjust schedule: edit cron in .github/workflows/daily-shorts.yml
+
+---
+
+Support
+Have questions? Message me on Ko-fi!

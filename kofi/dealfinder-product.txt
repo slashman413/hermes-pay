@@ -1,14 +1,14 @@
-# 🏷️ Deal Finder Pro — Ko-fi 商品設定
+# 🏷️ Deal Finder Pro — Ko-fi Product Setup
 
-## 商品類型：Membership（訂閱制）
+## Product Type: Membership (Subscription)
 
-### Pro — $9/月
-**名稱：** Deal Finder Pro
-**價格：** $9/月
-**說明：**
-自動追蹤 Amazon 最優惠商品，不再錯過任何降價。
-✓ 每小時掃描 Amazon 熱門商品價格
-✓ 偵測價格跌幅 > 20% 的 deal
-✓ 精美的優惠展示頁面
-✓ 自動 GitHub Pages 發布
-✓ 內含你的聯盟行銷連結
+### Pro — $9/month
+**Name:** Deal Finder Pro
+**Price:** $9/month
+**Description:**
+Automatically track Amazon deals so you never miss a price drop.
+✓ Hourly price scanning
+✓ Detect drops of 20%+
+✓ Beautiful deal showcase page
+✓ Auto-deploy to GitHub Pages
+✓ Built-in affiliate links

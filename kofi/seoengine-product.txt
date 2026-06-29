@@ -1,14 +1,14 @@
-# 📝 SEO Content Engine — Ko-fi 商品設定
+# 📝 SEO Content Engine — Ko-fi Product Setup
 
-## 商品類型：Membership（訂閱制）
+## Product Type: Membership (Subscription)
 
-### Pro — $19/月
-**名稱：** SEO Content Engine
-**價格：** $19/月
-**說明：**
-每天自動產出 SEO 優化文章，站穩 Google 搜尋排名。
-✓ 每日 5 篇 1500+ 字長文
-✓ Google 友善 SEO 結構
-✓ 10+ 領域主題（財經/科技/心理/健康）
-✓ 自動 GitHub Pages 發布
-✓ 關鍵字建議
+### Pro — $19/month
+**Name:** SEO Content Engine
+**Price:** $19/month
+**Description:**
+AI-powered SEO content generator — rank higher on Google automatically.
+✓ 5 SEO articles/day (1500+ words each)
+✓ Google-friendly SEO structure
+✓ 10+ niches (Finance, Tech, Psychology, Health...)
+✓ Auto-publish to GitHub Pages
+✓ Keyword suggestions
