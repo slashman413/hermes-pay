@@ -51,7 +51,7 @@ PRODUCTS = {
         "repo": "hermes-seo-farm",
         "tiers": {
             "free": {"price": 0},
-            "pro": {"price": 19, "kofi": ""},
+            "pro": {"price": 19, "kofi": "https://ko-fi.com/s/a03f0a8e3b"},
         }
     },
 }
