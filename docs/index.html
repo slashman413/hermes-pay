@@ -1,90 +1,221 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>付款中心 — hermes-pay</title>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>hermes-pay — 自動化工具與服務</title>
+<meta name="description" content="YouTube Shorts自動生成、台股即時訊號、Amazon Deal追蹤、SEO內容引擎 — 用Ko-fi付費，立即開始使用">
 <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:-apple-system,sans-serif; background:#0a0a1a; color:#e2e8f0; }
-    .container { max-width:800px; margin:auto; padding:20px; }
-    h1 { text-align:center; padding:30px 0; }
-    .product-group { background:#1e293b; border-radius:16px; padding:20px; margin:15px 0; }
-    .tier-buttons { display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
-    .tier-card { background:#0f172a; border-radius:12px; padding:15px; flex:1; min-width:140px; text-align:center; }
-    .tier-card .price { font-size:1.5rem; font-weight:bold; color:#22c55e; margin:5px 0; }
-    .pay-btn { display:inline-block; padding:10px 20px; background:linear-gradient(135deg,#3b82f6,#2563eb); color:white; border-radius:8px; text-decoration:none; font-weight:bold; font-size:0.9rem; }
-    footer { text-align:center; padding:30px; color:#475569; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#0a0a1a; color:#e2e8f0; min-height:100vh; }
+
+/* Header */
+.hero { background:linear-gradient(135deg,#0f172a,#1e293b); padding:60px 20px 40px; text-align:center; }
+.hero h1 { font-size:2.5rem; margin-bottom:10px; background:linear-gradient(135deg,#60a5fa,#a78bfa); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.hero p { color:#94a3b8; font-size:1.1rem; max-width:600px; margin:10px auto; }
+
+/* Container */
+.container { max-width:1000px; margin:auto; padding:20px; }
+
+/* Product cards */
+.products { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:20px; margin:30px 0; }
+.card { background:#1e293b; border-radius:16px; overflow:hidden; transition:transform .2s,box-shadow .2s; border:1px solid #334155; }
+.card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(59,130,246,.15); }
+.card-header { padding:20px; text-align:center; border-bottom:1px solid #334155; }
+.card-header .emoji { font-size:2rem; margin-bottom:8px; }
+.card-header h2 { font-size:1.3rem; }
+.card-header .tagline { color:#94a3b8; font-size:.85rem; margin-top:4px; }
+.card-body { padding:20px; }
+.feature { display:flex; align-items:flex-start; gap:10px; margin:10px 0; font-size:.9rem; color:#cbd5e1; }
+.feature .check { color:#22c55e; font-weight:bold; flex-shrink:0; }
+.price-box { background:#0f172a; border-radius:12px; padding:15px; text-align:center; margin:15px 0; }
+.price-box .amount { font-size:1.8rem; font-weight:bold; color:#f59e0b; }
+.price-box .period { color:#64748b; font-size:.85rem; }
+.price-box .sale { font-size:.85rem; color:#22c55e; margin-top:4px; }
+.buy-btn { display:block; background:linear-gradient(135deg,#3b82f6,#2563eb); color:white; text-decoration:none; padding:12px; border-radius:10px; font-weight:bold; text-align:center; margin:15px 0 0; transition:opacity .2s; }
+.buy-btn:hover { opacity:.9; }
+.buy-btn.secondary { background:linear-gradient(135deg,#22c55e,#16a34a); }
+.buy-btn.purple { background:linear-gradient(135deg,#a78bfa,#7c3aed); }
+
+/* Urgency banner */
+.urgency { background:linear-gradient(90deg,#f59e0b,#ef4444); text-align:center; padding:10px; font-weight:bold; font-size:.9rem; color:#0a0a1a; }
+
+/* FAQ */
+.faq { margin:40px 0; }
+.faq h2 { text-align:center; margin-bottom:20px; }
+.faq-item { background:#1e293b; border-radius:12px; padding:15px 20px; margin:10px 0; }
+.faq-item h3 { font-size:1rem; color:#f59e0b; margin-bottom:6px; }
+.faq-item p { color:#94a3b8; font-size:.9rem; line-height:1.6; }
+
+/* Footer */
+footer { text-align:center; padding:40px; color:#475569; font-size:.85rem; }
+footer a { color:#3b82f6; text-decoration:none; }
+
+/* Trust badges */
+.trust { text-align:center; margin:30px 0; }
+.trust span { display:inline-block; background:#1e293b; padding:8px 16px; border-radius:20px; margin:5px; font-size:.85rem; color:#64748b; }
+
+/* Subscription table */
+.sub-table { overflow-x:auto; margin:30px 0; }
+.sub-table table { width:100%; border-collapse:collapse; }
+.sub-table th { background:#1e293b; color:#60a5fa; padding:12px; text-align:center; font-size:.9rem; }
+.sub-table td { background:#0f172a; padding:10px 12px; text-align:center; color:#94a3b8; border-bottom:1px solid #1e293b; font-size:.85rem; }
+.sub-table td:first-child { color:#e2e8f0; text-align:left; font-weight:bold; }
+.sub-table .yes { color:#22c55e; }
+.sub-table .no { color:#ef4444; }
 </style>
 </head>
 <body>
-    <div class="container">
-        <h1>💳 付款中心</h1>
-        <p style="text-align:center;color:#64748b;">選擇產品與方案，點擊按鈕前往結帳</p>
-        
-        <div class="product-group">
-            <h3>ShortsGen Pro</h3>
-            <div class="tier-buttons">
-        
-                <div class="tier-card">
-                    <h4>Pro</h4>
-                    <p class="price">$29/月</p>
-                    <a href="https://ko-fi.com/s/896aa3c229" class="pay-btn" target="_blank">Ko-fi 🚀</a>
-                </div>
-            
-                <div class="tier-card">
-                    <h4>Business</h4>
-                    <p class="price">$99/月</p>
-                    <a href="https://ko-fi.com/s/896aa3c229" class="pay-btn" target="_blank">Ko-fi 🚀</a>
-                </div>
-            
-                <div class="tier-card">
-                    <h4>Enterprise</h4>
-                    <p class="price">$499/月</p>
-                    <a href="https://ko-fi.com/s/896aa3c229" class="pay-btn" target="_blank">Ko-fi 🚀</a>
-                </div>
-            </div></div>
-        <div class="product-group">
-            <h3>TWSE Premium</h3>
-            <div class="tier-buttons">
-        
-                <div class="tier-card">
-                    <h4>Monthly</h4>
-                    <p class="price">$49/月</p>
-                    <a href="https://ko-fi.com/s/b99720d13d" class="pay-btn" target="_blank">Ko-fi 🚀</a>
-                </div>
-            
-                <div class="tier-card">
-                    <h4>Quarterly</h4>
-                    <p class="price">$99/月</p>
-                    <a href="https://ko-fi.com/s/b99720d13d" class="pay-btn" target="_blank">Ko-fi 🚀</a>
-                </div>
-            
-                <div class="tier-card">
-                    <h4>Annual</h4>
-                    <p class="price">$299/月</p>
-                    <a href="https://ko-fi.com/s/b99720d13d" class="pay-btn" target="_blank">Ko-fi 🚀</a>
-                </div>
-            </div></div>
-        <div class="product-group">
-            <h3>Deal Finder Pro</h3>
-            <div class="tier-buttons">
-        
-                <div class="tier-card">
-                    <h4>Pro</h4>
-                    <p class="price">$9/月</p>
-                    <a href="https://ko-fi.com/s/5730f8f947" class="pay-btn" target="_blank">Ko-fi 🚀</a>
-                </div>
-            </div></div>
-        <div class="product-group">
-            <h3>SEO Content Engine</h3>
-            <div class="tier-buttons">
-        
-                <div class="tier-card">
-                    <h4>Pro</h4>
-                    <p class="price">$19/月</p>
-                    <a href="https://ko-fi.com/s/a03f0a8e3b" class="pay-btn" target="_blank">Ko-fi 🚀</a>
-                </div>
-            </div></div>
-        <footer>hermes-pay · 安全支付由 Stripe/Gumroad 處理</footer>
+
+<div class="urgency">🎉 本週限時優惠 — ShortsGen Pro 首月只要 $9.99！使用優惠碼 GENTLE10</div>
+
+<div class="hero">
+    <h1>🚀 自動化工具生態系</h1>
+    <p>用 GitHub Actions 自動化你的內容創作、投資分析、和行銷推廣</p>
+    <div class="trust">
+        <span>✅ 開放原始碼</span>
+        <span>✅ Ko-fi 付款</span>
+        <span>✅ 即時啟用</span>
+        <span>✅ 7 天退款保證</span>
     </div>
+</div>
+
+<div class="container">
+
+<div class="products">
+
+    <!-- ShortsGen Pro -->
+    <div class="card">
+        <div class="card-header">
+            <div class="emoji">🎬</div>
+            <h2>ShortsGen Pro</h2>
+            <div class="tagline">AI 自動生成 YouTube Shorts</div>
+        </div>
+        <div class="card-body">
+            <div class="feature"><span class="check">✓</span> 每日自動產出 2 支 Shorts</div>
+            <div class="feature"><span class="check">✓</span> 名言語錄 + 鋼琴背景音樂</div>
+            <div class="feature"><span class="check">✓</span> AI 語音朗讀 (edge-tts)</div>
+            <div class="feature"><span class="check">✓</span> 自動上傳 YouTube</div>
+            <div class="feature"><span class="check">✓</span> 原始碼完全開源</div>
+            <div class="price-box">
+                <div class="amount">$29</div>
+                <div class="period">/ 每月</div>
+                <div class="sale">🔥 本週特價：首月 $9.99</div>
+            </div>
+            <a href="https://ko-fi.com/s/896aa3c229" class="buy-btn">🚀 立即購買 →</a>
+        </div>
+    </div>
+
+    <!-- TWSE Premium -->
+    <div class="card">
+        <div class="card-header">
+            <div class="emoji">📊</div>
+            <h2>TWSE Premium</h2>
+            <div class="tagline">台股即時掃描 + Email 通知</div>
+        </div>
+        <div class="card-body">
+            <div class="feature"><span class="check">✓</span> 每日掃描 1800+ 上市股票</div>
+            <div class="feature"><span class="check">✓</span> MACD/KD/RSI/ADX 技術指標</div>
+            <div class="feature"><span class="check">✓</span> 即時 Email 買賣訊號</div>
+            <div class="feature"><span class="check">✓</span> 可自訂篩選參數</div>
+            <div class="feature"><span class="check">✓</span> 中英文報告</div>
+            <div class="price-box">
+                <div class="amount">$49</div>
+                <div class="period">/ 每月</div>
+            </div>
+            <a href="https://ko-fi.com/s/b99720d13d" class="buy-btn purple">📈 立即訂閱 →</a>
+        </div>
+    </div>
+
+    <!-- Deal Finder Pro -->
+    <div class="card">
+        <div class="card-header">
+            <div class="emoji">🛒</div>
+            <h2>Deal Finder Pro</h2>
+            <div class="tagline">自動追蹤 Amazon 最佳折扣</div>
+        </div>
+        <div class="card-body">
+            <div class="feature"><span class="check">✓</span> 每日自動掃描 Amazon 特價</div>
+            <div class="feature"><span class="check">✓</span> 多分類：3C/居家/書籍</div>
+            <div class="feature"><span class="check">✓</span> 價格歷史圖表</div>
+            <div class="feature"><span class="check">✓</span> Email 降價通知</div>
+            <div class="feature"><span class="check">✓</span> 聯盟行銷連結</div>
+            <div class="price-box">
+                <div class="amount">$19</div>
+                <div class="period">/ 每月</div>
+            </div>
+            <a href="https://ko-fi.com/s/5730f8f947" class="buy-btn secondary">🛒 立即購買 →</a>
+        </div>
+    </div>
+
+    <!-- SEO Content Engine -->
+    <div class="card">
+        <div class="card-header">
+            <div class="emoji">📝</div>
+            <h2>SEO Content Engine</h2>
+            <div class="tagline">AI 自動生成 SEO 文章</div>
+        </div>
+        <div class="card-body">
+            <div class="feature"><span class="check">✓</span> 每日自動產出 5 篇文章</div>
+            <div class="feature"><span class="check">✓</span> 6 大分類：投資/工具/科技/AI/心理/Deals</div>
+            <div class="feature"><span class="check">✓</span> 內建 SEO 優化 + Canonical URL</div>
+            <div class="feature"><span class="check">✓</span> GitHub Pages 免費託管</div>
+            <div class="feature"><span class="check">✓</span> 可自訂 AdSense / 聯盟行銷</div>
+            <div class="price-box">
+                <div class="amount">$19</div>
+                <div class="period">/ 每月</div>
+            </div>
+            <a href="https://ko-fi.com/s/a03f0a8e3b" class="buy-btn">📝 立即購買 →</a>
+        </div>
+    </div>
+
+</div>
+
+<!-- Free tools section -->
+<div class="card" style="max-width:600px;margin:30px auto;">
+    <div class="card-header">
+        <div class="emoji">🔧</div>
+        <h2>免費工具集</h2>
+        <div class="tagline">20+ 免費線上工具 — 完全免費・免安裝</div>
+    </div>
+    <div class="card-body">
+        <div class="feature"><span class="check">✓</span> 計算機（BMI/百分比/貸款）</div>
+        <div class="feature"><span class="check">✓</span> PDF 工具（圖片轉PDF/合併）</div>
+        <div class="feature"><span class="check">✓</span> QR Code 產生器</div>
+        <div class="feature"><span class="check">✓</span> 圖片壓縮/縮放</div>
+        <div class="feature"><span class="check">✓</span> 顏色工具/調色盤/漸層</div>
+        <a href="https://slashmantools.us/" class="buy-btn secondary">🔧 前往免費工具 →</a>
+    </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq">
+    <h2>❓ 常見問題</h2>
+    <div class="faq-item">
+        <h3>付款後多久能使用？</h3>
+        <p>購買後即獲得 GitHub Actions 存取權限。按照 README 設定即可立即啟用。</p>
+    </div>
+    <div class="faq-item">
+        <h3>可以退款嗎？</h3>
+        <p>提供 7 天無條件退款保障。請透過 Ko-fi 或直接聯繫我們。</p>
+    </div>
+    <div class="faq-item">
+        <h3>是否需要信用卡？</h3>
+        <p>所有產品透過 Ko-fi 付款，支援信用卡、PayPal 等多種方式。</p>
+    </div>
+    <div class="faq-item">
+        <h3>套裝組合有優惠嗎？</h3>
+        <p>購買 2 個以上產品享 15% 折扣！請聯繫我們取得組合優惠碼。</p>
+    </div>
+</div>
+
+</div>
+
+<footer>
+    <p>hermes-pay 💳 — 自動化工具付款中心</p>
+    <p><a href="https://github.com/slashman413/hermes-pay">GitHub</a> · <a href="https://www.youtube.com/@GentleSoul666">YouTube</a> · <a href="https://slashmantools.us/">Free Tools</a></p>
+    <p style="margin-top:10px;"><small>© 2026 slashman413. All rights reserved.</small></p>
+</footer>
+
 </body>
 </html>
