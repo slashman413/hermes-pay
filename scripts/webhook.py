@@ -104,6 +104,15 @@ for _pk, _pv in PRODUCTS.items():
 KOFI_VERIFICATION_TOKEN: str = os.environ.get("KOFI_VERIFICATION_TOKEN", "")
 GUMROAD_SECRET: str = os.environ.get("GUMROAD_SECRET", "")
 
+# Optional: persist the revenue log back to GitHub so the hermes-pro dashboard
+# (which reads data/revenue.json from this repo) reflects REAL payments. Without
+# this, a deployed webhook only writes to its ephemeral local disk and the
+# dashboard never sees the money. Set a fine-grained PAT with contents:write.
+GITHUB_TOKEN: str = os.environ.get("GITHUB_TOKEN", "")
+GITHUB_REPO: str = os.environ.get("GITHUB_REPO", "slashman413/hermes-pay")
+GITHUB_FILE_PATH: str = os.environ.get("GITHUB_FILE_PATH", "data/revenue.json")
+GITHUB_BRANCH: str = os.environ.get("GITHUB_BRANCH", "main")
+
 _WARN_MISSING: list[str] = []
 if not KOFI_VERIFICATION_TOKEN:
     _WARN_MISSING.append("KOFI_VERIFICATION_TOKEN")
@@ -140,6 +149,55 @@ def _save_revenue(records: list[dict]) -> None:
     )
 
 
+def _github_persist(records: list[dict]) -> None:
+    """
+    Best-effort: commit the revenue log back to GitHub via the contents API so
+    the dashboard reflects real payments. No-op if GITHUB_TOKEN is unset. Uses
+    only stdlib (urllib) so the webhook stays dependency-free. Never raises —
+    a persistence hiccup must not drop a payment that's already saved locally.
+    """
+    if not GITHUB_TOKEN:
+        return
+    import base64, urllib.request, urllib.error
+
+    api = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{GITHUB_FILE_PATH}"
+    headers = {
+        "Authorization": f"Bearer {GITHUB_TOKEN}",
+        "Accept": "application/vnd.github+json",
+        "User-Agent": "hermes-pay-webhook",
+    }
+
+    def _req(method: str, data: dict | None = None):
+        body = json.dumps(data).encode() if data is not None else None
+        r = urllib.request.Request(api, data=body, headers=headers, method=method)
+        with urllib.request.urlopen(r, timeout=15) as resp:
+            return json.loads(resp.read().decode())
+
+    try:
+        # Get current file sha (needed to update an existing file).
+        sha = None
+        try:
+            existing = _req("GET")
+            sha = existing.get("sha")
+        except urllib.error.HTTPError as e:
+            if e.code != 404:
+                raise  # 404 = file doesn't exist yet; create it.
+        content = base64.b64encode(
+            json.dumps(records, indent=2, ensure_ascii=False).encode("utf-8")
+        ).decode("ascii")
+        payload = {
+            "message": f"chore: record payment ({len(records)} txns) [skip ci]",
+            "content": content,
+            "branch": GITHUB_BRANCH,
+        }
+        if sha:
+            payload["sha"] = sha
+        _req("PUT", payload)
+        print(f"[webhook] persisted revenue.json to {GITHUB_REPO}@{GITHUB_BRANCH}")
+    except Exception as exc:  # noqa: BLE001 — never let persistence break ingestion
+        print(f"[webhook] WARNING: GitHub persist failed ({exc}). Saved locally only.")
+
+
 def append_revenue(record: dict) -> tuple[bool, str]:
     """
     Append record to revenue.json, deduplicating on txn_id.
@@ -153,6 +211,7 @@ def append_revenue(record: dict) -> tuple[bool, str]:
             return False, f"duplicate txn_id={txn_id}, skipped"
     records.append(record)
     _save_revenue(records)
+    _github_persist(records)  # push real payments to the repo → dashboard sees them
     return True, f"recorded txn_id={txn_id}"
 
 

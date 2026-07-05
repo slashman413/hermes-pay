@@ -1,0 +1,18 @@
+# One-click deploy to Render (free tier). Push this repo, then in Render:
+# New → Blueprint → pick this repo. It reads render.yaml and provisions the service.
+# Fill the four secret env vars in the dashboard (they're marked sync:false).
+services:
+  - type: web
+    name: hermes-pay-webhook
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: KOFI_VERIFICATION_TOKEN   # Ko-fi → Settings → Webhooks → Verification Token
+        sync: false
+      - key: GUMROAD_SECRET            # arbitrary shared secret; also put in Gumroad's ping URL ?secret=
+        sync: false
+      - key: GITHUB_TOKEN              # fine-grained PAT, contents:write on slashman413/hermes-pay
+        sync: false
+      - key: GITHUB_REPO
+        value: slashman413/hermes-pay
