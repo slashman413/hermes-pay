@@ -436,9 +436,19 @@ class WebhookHandler(BaseHTTPRequestHandler):
         # Prefix all access logs with [webhook] for easy grepping
         print(f"[webhook] {self.address_string()} - {fmt % args}")
 
+    MAX_BODY = 1_048_576  # 1 MB — payment webhook payloads are tiny; reject larger (anti-DoS).
+
+    def _content_length(self) -> int:
+        try:
+            return int(self.headers.get("Content-Length", 0))
+        except (TypeError, ValueError):
+            return -1
+
     def _read_body(self) -> bytes:
-        length = int(self.headers.get("Content-Length", 0))
-        return self.rfile.read(length) if length else b""
+        n = self._content_length()
+        if n <= 0:
+            return b""
+        return self.rfile.read(min(n, self.MAX_BODY))
 
     def _respond(self, code: int, message: str) -> None:
         body = message.encode("utf-8")
@@ -460,6 +470,12 @@ class WebhookHandler(BaseHTTPRequestHandler):
         parsed = urllib.parse.urlparse(self.path)
         path = parsed.path
         query = parsed.query
+
+        n = self._content_length()
+        if n < 0:
+            return self._respond(400, "bad Content-Length")
+        if n > self.MAX_BODY:
+            return self._respond(413, "payload too large")
         body = self._read_body()
 
         if path == "/webhook/kofi":
