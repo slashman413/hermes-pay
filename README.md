@@ -24,9 +24,9 @@ python scripts/payment.py buttons
 
 ## 當前狀態
 
-- [ ] Gumroad 帳號註冊
+- [x] Gumroad 帳號註冊（slashmaster6.gumroad.com，已驗證：slashmaster6.gumroad.com/l/kuvajr 已上線）
 - [ ] ShortsGen Pro listing 建立
-- [ ] TWSE Premium listing 建立
+- [x] TWSE Premium listing 建立（Ko-fi：ko-fi.com/s/b99720d13d 已上線）
 - [ ] Deal Finder Pro listing 建立
 - [ ] SEO Engine listing 建立
 - [ ] 第一筆交易記錄
