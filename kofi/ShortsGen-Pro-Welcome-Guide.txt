@@ -17,7 +17,7 @@ Step 1: Put it in your own GitHub repo
     to install.)
 
 Step 2: Set Up Secrets
-In your forked repository:
+In your repository:
 Settings → Secrets and variables → Actions
 Add the following secrets:
 
