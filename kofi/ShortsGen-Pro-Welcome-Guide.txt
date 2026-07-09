@@ -1,16 +1,20 @@
 🎬 ShortsGen Pro — Welcome Guide
 ===================================
-Thank you for subscribing to ShortsGen Pro!
+Thank you for buying ShortsGen Pro!
 
-Your automated YouTube Shorts production system is ready.
-Follow the steps below to get started:
+You've received shortsgen-pro.zip — the complete, self-contained automated
+YouTube Shorts production system. It runs on YOUR own GitHub repo using free
+GitHub Actions minutes. No server, no private dependencies. See SETUP.md inside
+the zip for the full walkthrough; the short version:
 
 ---
 
-Step 1: Fork the Project
-1. Go to https://github.com/slashman413/pixabay-shorts-bot
-2. Click "Fork" (top right)
-3. Fork it to your GitHub account
+Step 1: Put it in your own GitHub repo
+1. Download and unzip shortsgen-pro.zip (attached to your purchase).
+2. Create a new GitHub repo (private is fine).
+3. Upload / push all the files to it.
+   (The media_kit YouTube-upload package is already bundled — nothing private
+    to install.)
 
 Step 2: Set Up Secrets
 In your forked repository:
