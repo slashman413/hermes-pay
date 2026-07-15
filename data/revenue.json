@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "date": "2026-07-15T09:56:48.188348+00:00",
+    "product": "saas-starter",
+    "tier": "full",
+    "amount": 99.0,
+    "currency": "USD",
+    "customer": "dryrun@test.local",
+    "source": "gumroad",
+    "txn_id": "DRYRUN-001",
+    "permalink": "kuvajr"
+  }
+]
