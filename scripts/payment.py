@@ -19,6 +19,13 @@ TRANSACTIONS_FILE = DATA_DIR / "transactions.json"
 CUSTOMERS_FILE = DATA_DIR / "customers.json"
 
 PRODUCTS = {
+    "saas-starter": {
+        "name": "SaaS Starter",
+        "repo": "saas-starter",
+        "tiers": {
+            "full": {"price": 99, "gumroad": "https://slashmaster6.gumroad.com/l/kuvajr"},
+        }
+    },
     "shortsgen": {
         "name": "ShortsGen Pro",
         "repo": "hermes-shortsgen",

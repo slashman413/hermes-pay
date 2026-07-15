@@ -54,6 +54,12 @@ if _payment_mod_path.exists():
 else:
     # Fallback copy — keep in sync with payment.py manually.
     PRODUCTS = {
+        "saas-starter": {
+            "name": "SaaS Starter",
+            "tiers": {
+                "full": {"price": 99},
+            },
+        },
         "shortsgen": {
             "name": "ShortsGen Pro",
             "tiers": {
@@ -337,7 +343,11 @@ def handle_kofi(body: bytes) -> tuple[int, str]:
 # Populate this once you create Gumroad listings and know their permalinks.
 # Format:  "gumroad-permalink": ("product_key", "tier_key")
 GUMROAD_PERMALINK_MAP: dict[str, tuple[str, str]] = {
-    # Examples — update when you create Gumroad products:
+    # saas-starter Full — the live $99 product (slashmaster6.gumroad.com/l/kuvajr).
+    # Mapped by permalink so it's matched exactly, not by amount (which collides
+    # with ShortsGen's $99 business tier in the amount-based fallback).
+    "kuvajr": ("saas-starter", "full"),
+    # Examples — update when you create more Gumroad products:
     # "shortsgen-pro": ("shortsgen", "pro"),
     # "shortsgen-business": ("shortsgen", "business"),
     # "twse-monthly": ("twse", "monthly"),
